@@ -44,6 +44,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var messageObj = PFObject(className:"Message")
         messageObj["text"] = message
+        messageObj["user"] = PFUser.currentUser()
+        print( "@@@@@@@@PFUSER IS^&*( : \(messageObj["user"]) @@@@@@@@@@@@@@@@@@@@") 
         messageObj.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -64,7 +66,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("Mess[text]: \(mess) #################")
         if mess["text"] != nil{
             print("********************CREATED: \(mess.createdAt)")
+            if (mess["user"]) != nil{
+                /*if (mess["user.username"]) != nil{
+                cell.userLabel.text = mess["user.username"]as! String
+                print("%%%%%%%%%%%% user: \(mess["user"].name) %%%%%%%%%")
             
+                }*/
+            }
             cell.labelText.text = mess["text"] as! String
         }
         //cell.labelText.text = mess["body"] as! String

@@ -13,6 +13,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet var labelText: UILabel!
     
     
+    @IBOutlet var userLabel: UILabel!
     
     
     override func awakeFromNib() {

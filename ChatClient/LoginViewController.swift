@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         user = PFUser()
         user!.username = "aznd13@hotmail.com"//emailText.text
         user!.password = "1234321"//passwordText.text
-        user!.email = emailText.text
+        user!.email = "TEST USERNAME"
         
         //user["phone"] = 415-392-0202
         //aznd13@hotmail.com
