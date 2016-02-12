@@ -33,8 +33,8 @@ class LoginViewController: UIViewController {
 
     @IBAction func signUp(sender: AnyObject) {
         user = PFUser()
-        user!.username = emailText.text
-        user!.password = passwordText.text
+        user!.username = "aznd13@hotmail.com"//emailText.text
+        user!.password = "1234321"//passwordText.text
         user!.email = emailText.text
         
         //user["phone"] = 415-392-0202
