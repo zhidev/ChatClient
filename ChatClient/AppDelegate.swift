@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func applicationDidFinishLaunching(application: UIApplication) {
+        Parse.setApplicationId("YpDZrCPA68Phd9FqiVXX1sZ5AgoD5wEk4FMn9p8o",
+            clientKey: "JlqanetJccKLwbduN7YwO7ryU7nCvUsjCThmMOrP")
+    }
 
 }
 
