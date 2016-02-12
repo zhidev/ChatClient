@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iX0-br-fq3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2ea-Ep-hvR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -56,30 +56,92 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rsK-0y-C7f"/>
                     <connections>
                         <outlet property="LoginButton" destination="6oX-kJ-Zlv" id="nvD-qB-lA5"/>
+                        <outlet property="emailText" destination="nKE-cW-6tz" id="neH-Co-KT3"/>
+                        <outlet property="passwordText" destination="jM9-oj-BXK" id="gdF-Dr-XHZ"/>
                         <outlet property="signUpButton" destination="3ZA-Xl-D0N" id="Hpa-1m-tEw"/>
+                        <segue destination="zi2-st-Y3o" kind="modal" identifier="login" id="zKl-Ed-vCM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JWx-M7-QBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="339"/>
+            <point key="canvasLocation" x="662" y="339"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Chat-->
         <scene sceneID="lMd-om-1wV">
             <objects>
                 <viewController id="bUw-wK-6yb" customClass="ChatViewController" customModule="ChatClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Cs-9B-XYX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hhf-Ub-edq">
+                                <rect key="frame" x="234" y="518" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Compose"/>
+                                <connections>
+                                    <action selector="composeMessage:" destination="bUw-wK-6yb" eventType="touchDown" id="PJ7-X3-zI3"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Message here" textAlignment="center" id="84I-wx-qXd">
+                                <rect key="frame" x="14" y="463" width="212" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Chat" id="mFh-Zr-wU0"/>
+                    <connections>
+                        <outlet property="composeButton" destination="hhf-Ub-edq" id="GOY-Wg-TJ7"/>
+                        <outlet property="messageText" destination="84I-wx-qXd" id="ADp-rR-Ydh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7s5-Ah-cBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607" y="328"/>
+            <point key="canvasLocation" x="1600" y="339"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sCP-45-lHP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2ea-Ep-hvR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dVl-iY-Ive">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iX0-br-fq3" kind="relationship" relationship="rootViewController" id="Tb9-az-Uga"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GiS-Iv-wHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="339"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hFH-6A-KEe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zi2-st-Y3o" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Ke-pl-x2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bUw-wK-6yb" kind="relationship" relationship="rootViewController" id="ftT-Of-923"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fK3-pb-0z7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1068" y="339"/>
         </scene>
     </scenes>
 </document>

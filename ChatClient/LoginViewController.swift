@@ -12,6 +12,14 @@ class LoginViewController: UIViewController {
 
     @IBOutlet var LoginButton: UIButton!
     @IBOutlet var signUpButton: UIButton!
+    @IBOutlet var emailText: UITextField!
+    @IBOutlet var passwordText: UITextField!
+    
+    
+    var user: PFUser?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,17 +30,17 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     @IBAction func signUp(sender: AnyObject) {
-        var user = PFUser()
-        user.username = "myUsername"
-        user.password = "myPassword"
-        user.email = "email@example.com"
+        user = PFUser()
+        user!.username = emailText.text
+        user!.password = passwordText.text
+        user!.email = emailText.text
         
-        user["phone"] = 415-392-0202
-        
-        user.signUpInBackgroundWithBlock {
+        //user["phone"] = 415-392-0202
+        //aznd13@hotmail.com
+
+        user!.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             if let error = error {
                 let errorString = error.userInfo["error"] as? NSString
@@ -45,24 +53,24 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(sender: AnyObject) {
-    
-        PFUser.logInWithUsernameInBackground("myname", password:"mypass") {
+            print(user)
+        PFUser.logInWithUsernameInBackground(user!.username!, password:user!.password!) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 // Do stuff after successful login.
+                self.performSegueWithIdentifier("login", sender: self)
+                
+                
             } else {
                 // The login failed. Check error to see why.
             }
         }
+        
 }
-    /*
-    // MARK: - Navigation
+    /*override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
+    
+        presentViewController(chatVC, animated: true, completion: nil)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    }*/
 
 }

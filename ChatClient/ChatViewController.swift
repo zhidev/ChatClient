@@ -7,9 +7,20 @@
 //
 
 import UIKit
+import Parse
+
+
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet var messageText: UITextView!
+    
+    @IBOutlet var composeButton: UIButton!
+    
+    var message: String?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +32,27 @@ class ChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func composeMessage(sender: AnyObject) {
+        message = messageText.text
+        
+        var messageObj = PFObject(className:"Message")
+        messageObj["text"] = message
+        messageObj.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                // The object has been saved.
+                print("saved")
+                print(messageObj)
+                
+            } else {
+                // There was a problem, check error.description
+            }
+        }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+ 
+        
+        
+        
     }
-    */
 
 }
